@@ -50,3 +50,6 @@ Route::group(['middleware' => ['web']], function () {
 Route::get('parameter', function () {
     echo "Middleware parameters";
 })->middleware('check_role:user');
+
+//Bài tập về Middleware
+Route::get('test', 'TestMiddlewareController@printToken')->middleware('check_token');
