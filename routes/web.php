@@ -81,7 +81,7 @@ Route::get('blade', function () {
     return view('child');
 });
 
-//Bai tap View Blade
+//Bai tap View Blade Template
 Route::get('test-blade', function () {
     return view('layouts.test');
 });
