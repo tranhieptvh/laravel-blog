@@ -6,7 +6,13 @@ use Illuminate\Http\Request;
 
 class TestMiddlewareController extends Controller
 {
-    function printToken(){
+    function printToken()
+    {
         echo "Hello Middleware";
+    }
+
+    function check()
+    {
+        return response()->json(['status' =>'ok']);
     }
 }

@@ -76,9 +76,24 @@ Route::get('request-method', function (Request $request) {
     var_dump($request->server());
 });
 
+//Input
+Route::get('post-form', function () {
+    return view('post-form');
+});
+
+Route::post('showInfo', [
+    'as' => 'showInfo',
+    'uses' => 'InputController@showInfo'
+]);
+
 //Blade
 Route::get('blade', function () {
     return view('child');
+});
+
+//Response
+Route::get('home', function () {
+    return response('Hello World', 200)->header('Content-Type', 'text/plain');
 });
 
 //Bai tap View Blade Template

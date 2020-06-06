@@ -15,13 +15,18 @@ class CheckToken
      */
     public function handle($request, Closure $next)
     {
-        if ($request->path() !== 'login') {
-            if (!$request->token) {
-                //Todo something
-                //Kiem tra token co hop le khong?
-                return redirect('login');
-            }
+        // if ($request->path() !== 'login') {
+        //     if (!$request->header('token')) {
+        //         //Todo something
+        //         //Kiem tra token co hop le khong?
+        //         return redirect('login');
+        //     }
+        // }
+        if ($request->header('token')) {
+            return $next($request);
+        } else {
+            // return redirect('login');
+            return response()->json(['status' => 'error'],403);
         }
-        return $next($request);
     }
 }
