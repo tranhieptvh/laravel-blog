@@ -104,9 +104,9 @@ Route::get('test-blade', function () {
 //Query Builder
 Route::get('insert-post', function () {
     // DB::table('posts')->insert([
-    //     'title' => 'Hello World',
-    //     'url' => 'localhost',
-    //     'content' => 'Content',
+    //     'title' => 'Hello World 1',
+    //     'url' => 'localhost/post1',
+    //     'content' => 'Content 1',
     //     'status' => 1
     // ]);
 
@@ -133,4 +133,35 @@ Route::get('update-post', function () {
 
 Route::get('delete-post', function () {
     DB::table('posts')->where('id', 3)->delete();
+});
+
+Route::get('get', function () {
+    $posts = DB::table('posts')->get();
+    dd($posts);
+});
+
+Route::get('first', function () {
+    $firstPost = DB::table('posts')->first();
+    dd($firstPost);
+});
+
+Route::get('select', function () {
+    $posts = DB::table('posts')->select('title', 'url', 'content')->get();
+    dd($posts);
+});
+
+Route::get('join', function () {
+    $posts = DB::table('posts')->join('comments', 'posts.id', '=', 'comments.post_id')
+        ->select('posts.id', 'title', 'url', 'content', 'content_comment')->get();
+    dd($posts);
+});
+
+Route::get('where', function () {
+    $posts = DB::table('posts')->whereNotIn('status', [1, 2])->get();
+    dd($posts);
+});
+
+Route::get('orderBy', function () {
+    $posts = DB::table('posts')->orderBy('status')->get();
+    dd($posts);
 });
