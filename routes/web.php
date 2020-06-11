@@ -100,3 +100,37 @@ Route::get('home', function () {
 Route::get('test-blade', function () {
     return view('layouts.test');
 });
+
+//Query Builder
+Route::get('insert-post', function () {
+    // DB::table('posts')->insert([
+    //     'title' => 'Hello World',
+    //     'url' => 'localhost',
+    //     'content' => 'Content',
+    //     'status' => 1
+    // ]);
+
+    DB::table('posts')->insert([
+        [
+            'title' => 'Hello World 2',
+            'url' => 'localhost/post2',
+            'content' => 'Content 2',
+            'status' => 0
+        ],
+        [
+            'title' => 'Hello World 3',
+            'url' => 'localhost/post3',
+            'content' => 'Content 3',
+            'status' => 1
+        ]
+    ]);
+});
+
+Route::get('update-post', function () {
+    DB::table('posts')->where('id', '=', 2)->update(['status' => 2]);
+    // DB::table('posts')->where('id', 2)->update(['status' => 2]);
+});
+
+Route::get('delete-post', function () {
+    DB::table('posts')->where('id', 3)->delete();
+});
