@@ -9,13 +9,10 @@
 
     @foreach ($postsList as $item)
     <div class="col-sm-12">
-        {{-- <h2>
-                <a href="{{ route("post.show/{$item->id}") }}">
-        TITLE: {{ $item->title }}
-        </a>
-        </h2> --}}
-        <h4>
-            TITLE: {{ $item->title }}
+        <h4>TITLE:
+            <a href="{{ route("post.show","{$item->id}") }}">
+                {{ $item->title }}
+            </a>
         </h4>
         <h5>Created: {{ $item->created_at }}</h5>
         <p>{{ $item->content }}</p>
