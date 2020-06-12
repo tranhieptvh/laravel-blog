@@ -167,15 +167,14 @@ Route::get('test-blade', function () {
 // });
 
 //Bai tap Query Builder
-// Route::namespace('Post')->prefix('post')->group(function () {
-//     Route::get('list', [
-//         'as' => 'list',
-//         'uses' => 'PostController@showPostsList'
-//     ]);
-
-//     Route::get('create-post', function () {
-//         return view('posts.create-post');
-//     });
-// });
-
 Route::resource('post', 'Post\PostController');
+
+//Bai tap ORM
+Route::get('search-student', function (){
+    return view('ORM.search-student');
+})->name('search-student');
+
+Route::post('getStudent', [
+    'as' => 'getStudent',
+    'uses' => 'ORM\StudentController@showStudent'
+]);
