@@ -178,3 +178,12 @@ Route::post('getStudent', [
     'as' => 'getStudent',
     'uses' => 'ORM\StudentController@showStudent'
 ]);
+
+Route::get('search-user', function () {
+    return view('ORM.search-user');
+})->name('search-user');
+
+Route::post('getUser', [
+    'as' => 'getUser',
+    'uses' => 'ORM\UserDetailController@showUser'
+]);

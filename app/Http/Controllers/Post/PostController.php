@@ -46,6 +46,7 @@ class PostController extends Controller
             'url' => 'required|unique:posts'
         ]);
         $post = $request->toArray();
+
         // var_dump($post);
         DB::table('posts')->insert($post);
         return redirect()->route('post.create')->with('success', 'Thêm thành công!');

@@ -9,8 +9,20 @@ class Students extends Model
     protected $table = 'students';
 
     function getStudent($id,$name,$class){
-        $students = Students::where('id',$id)->orWhere('name',$name)->orWhere('class',$class)
-        ->orderBy('id','DESC')->get();
-        return $students->toArray();
+
+        $students = Students::query();
+
+        if(isset($id)) {
+            $students->where('id', $id);
+        }
+        if(isset($name)) {
+            $students->where('name','LIKE', "%$name%");
+        }
+        if(isset($class)) {
+            $students->where('class',$class);
+        }
+
+        $result = $students->orderBy('id','DESC')->get();
+        return $result->toArray();
     }
 }
